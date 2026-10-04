@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =========================================================
+         BASIC DOCUMENT INFORMATION & SEO
+    ========================================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time Gender Detection System using AI and computer vision. A Master's level project demonstrating browser-based neural network inference.">
+    <meta name="author" content="GenderDetect AI">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Real-Time Gender Detection System">
+    <meta property="og:description" content="An intelligent computer vision system that detects human faces and estimates gender using pre-trained machine learning models.">
+    <meta property="og:type" content="website">
+
+    <title>Real-Time Gender Detection System | AI Computer Vision</title>
+    
+    <!-- =========================================================
+         FONTS & STYLESHEETS
+    ========================================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- =========================================================
+         APPLICATION LOADER
+    ========================================================= -->
+    <div id="applicationLoader" class="application-loader" role="status" aria-live="polite">
+        <div class="loader-content">
+            <div class="loader-logo" aria-hidden="true">
+                <div class="logo-face">
+                    <span></span>
+                </div>
+            </div>
+            <h2>Gender Detection AI</h2>
+            <p id="loaderMessage">Initializing artificial intelligence...</p>
+            <div class="loader-spinner" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         MAIN APPLICATION
+    ========================================================= -->
+    <div id="application" class="application hidden">
+        
+        <!-- ======================================
+             NAVIGATION
+        ======================================= -->
+        <header class="navbar" role="banner">
+            <div class="container nav-container">
+                <a href="#home" class="brand" aria-label="GenderDetect AI Home">
+                    <div class="brand-icon" aria-hidden="true">
+                        <span class="brand-eye"></span>
+                    </div>
+                    <div class="brand-text">
+                        <strong>GenderDetect</strong>
+                        <small>AI SYSTEM</small>
+                    </div>
+                </a>
+                <nav class="navigation" role="navigation" aria-label="Main Navigation">
+                    <a href="#home">Home</a>
+                    <a href="#detector">Detector</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#about">About</a>
+                </nav>
+                <a href="#detector" class="nav-action">Start Detection</a>
+            </div>
+        </header>
+
+        <main role="main">
+            <!-- ======================================
+                 HERO SECTION (UPGRADED WITH SLIDER)
+            ======================================= -->
+            <section id="home" class="hero-section" aria-labelledby="hero-heading">
+                <div class="container hero-container">
+                    
+                    <!-- LEFT: TEXT CONTENT -->
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            AI SYSTEM ONLINE
+                        </div>
+                        <h1 id="hero-heading">Real-Time <span>Gender Detection</span> System</h1>
+                        <p class="hero-description">
+                            An intelligent computer vision system that detects a human face 
+                            and estimates gender using a pre-trained machine learning model. 
+                            Designed for accuracy, privacy, and real-time browser inference.
+                        </p>
+                        <div class="hero-buttons">
+                            <button id="heroUploadButton" class="btn btn-primary" type="button">
+                                <span aria-hidden="true">📷</span> Upload Image
+                            </button>
+                            <button id="heroWebcamButton" class="btn btn-secondary" type="button">
+                                <span aria-hidden="true">🎥</span> Use Camera
+                            </button>
+                        </div>
+                        <div class="hero-features" aria-label="System Features">
+                            <div class="hero-feature">
+                                <span aria-hidden="true">✓</span> Real AI Model
+                            </div>
+                            <div class="hero-feature">
+                                <span aria-hidden="true">✓</span> Multiple-Face Protection
+                            </div>
+                            <div class="hero-feature">
+                                <span aria-hidden="true">✓</span> Browser Based
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: PROFESSIONAL IMAGE SLIDER -->
+                    <div class="hero-visual">
+                        <div class="hero-slider" aria-label="AI Technology Showcase" aria-roledescription="carousel">
+                            <div class="slider-track">
+                                <!-- 7 High-Quality AI/Tech Images -->
+                                <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 7" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 7" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 7" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 7" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 7" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 7" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80')"></div>
+                                <div class="slide" role="group" aria-roledescription="slide" aria-label="7 of 7" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80')"></div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="slider-btn prev-btn" aria-label="Previous slide" type="button">&#10094;</button>
+                            <button class="slider-btn next-btn" aria-label="Next slide" type="button">&#10095;</button>
+                            
+                            <!-- Dots & Progress Bar -->
+                            <div class="slider-dots" role="tablist" aria-label="Slide navigation"></div>
+                            <div class="slider-progress" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================
+                 SYSTEM STATUS
+            ======================================= -->
+            <section class="status-section" aria-label="System Status">
+                <div class="container">
+                    <div class="system-status-card">
+                        <div class="system-status-left">
+                            <span id="systemStatus" class="system-status">
+                                <span class="status-dot" aria-hidden="true"></span>
+                                Initializing AI models...
+                            </span>
+                        </div>
+                        <div class="system-status-right">
+                            <span>Detection Mode:</span>
+                            <strong>Single Face Validation</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================
+                 DETECTOR SECTION
+            ======================================= -->
+            <section id="detector" class="detector-section section-padding" aria-labelledby="detector-heading">
+                <div class="container">
+                    <div class="section-heading">
+                        <div class="section-label">DETECTION ENGINE</div>
+                        <h2 id="detector-heading">Analyze a Face</h2>
+                        <p>Upload an image or use your webcam. The system requires exactly one visible face for accurate classification.</p>
+                    </div>
+
+                    <div class="mode-tabs" role="tablist" aria-label="Detection Mode">
+                        <button id="uploadTab" class="mode-tab active" type="button" role="tab" aria-selected="true">
+                            <span aria-hidden="true">📁</span> Image Upload
+                        </button>
+                        <button id="webcamTab" class="mode-tab" type="button" role="tab" aria-selected="false">
+                            <span aria-hidden="true">🎥</span> Webcam
+                        </button>
+                    </div>
+
+                    <!-- Upload Panel -->
+                    <div id="uploadPanel" class="detector-panel active-panel" role="tabpanel">
+                        <div class="upload-card">
+                            <div class="upload-card-header">
+                                <div>
+                                    <span class="card-label">IMAGE ANALYSIS</span>
+                                    <h3>Upload a Face Image</h3>
+                                </div>
+                                <span class="format-badge">JPG / PNG / WEBP</span>
+                            </div>
+                            <div id="uploadArea" class="upload-area">
+                                <div class="upload-icon" aria-hidden="true">↑</div>
+                                <h4>Drop your image here</h4>
+                                <p>or choose an image from your device</p>
+                                <button id="chooseImageButton" type="button" class="btn btn-outline">
+                                    Choose Image
+                                </button>
+                                <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" hidden aria-label="Upload face image">
+                                <small>Maximum file size: 10 MB</small>
+                            </div>
+
+                            <div id="imagePreviewContainer" class="image-preview-container hidden">
+                                <div class="preview-header">
+                                    <strong>Selected Image</strong>
+                                    <button id="removeImageButton" type="button" class="remove-button" aria-label="Remove selected image">Remove</button>
+                                </div>
+                                <div class="preview-image-wrapper">
+                                    <img id="imagePreview" src="" alt="Selected face preview">
+                                </div>
+                                <button id="analyzeImageButton" type="button" class="btn btn-primary analyze-button">
+                                    Analyze Image
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Webcam Panel -->
+                    <div id="webcamPanel" class="detector-panel" role="tabpanel">
+                        <div class="webcam-card">
+                            <div class="upload-card-header">
+                                <div>
+                                    <span class="card-label">LIVE CAMERA</span>
+                                    <h3>Webcam Detection</h3>
+                                </div>
+                                <div id="cameraStatus" class="camera-status">
+                                    <span id="cameraStatusDot" class="camera-status-dot" aria-hidden="true"></span>
+                                    <span id="cameraStatusText">Camera Off</span>
+                                </div>
+                            </div>
+                            <div class="webcam-wrapper">
+                                <video id="webcamVideo" autoplay playsinline muted aria-label="Webcam video feed"></video>
+                                <canvas id="webcamCanvas" hidden></canvas>
+                                <div class="webcam-overlay" aria-hidden="true">
+                                    <div class="camera-frame">
+                                        <span class="frame-corner tl"></span>
+                                        <span class="frame-corner tr"></span>
+                                        <span class="frame-corner bl"></span>
+                                        <span class="frame-corner br"></span>
+                                    </div>
+                                </div>
+                                <div id="webcamMessage" class="webcam-placeholder">
+                                    <div class="camera-placeholder-icon" aria-hidden="true">🎥</div>
+                                    <h4>Camera is not active</h4>
+                                    <p>Start your camera to begin detection.</p>
+                                </div>
+                            </div>
+                            <div class="webcam-controls">
+                                <button id="startCameraButton" type="button" class="btn btn-primary">Start Camera</button>
+                                <button id="captureButton" type="button" class="btn btn-secondary" disabled>Capture & Analyze</button>
+                                <button id="stopCameraButton" type="button" class="btn btn-danger" disabled>Stop Camera</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detection Message -->
+                    <div id="detectionMessage" class="detection-message hidden" role="alert" aria-live="assertive">
+                        <div class="message-icon" aria-hidden="true">!</div>
+                        <div class="message-content">
+                            <h4 id="messageTitle">Detection Message</h4>
+                            <p id="messageText">Message</p>
+                        </div>
+                        <button id="closeMessageButton" type="button" class="message-close" aria-label="Close message">×</button>
+                    </div>
+
+                    <!-- Processing Indicator -->
+                    <div id="processingIndicator" class="processing-card hidden" role="status" aria-live="polite">
+                        <div class="processing-spinner" aria-hidden="true"></div>
+                        <div>
+                            <strong>Analyzing face...</strong>
+                            <p>The AI model is processing the image.</p>
+                        </div>
+                    </div>
+
+                    <!-- Results (Accessible to Screen Readers) -->
+                    <div id="resultsSection" class="results-section hidden" aria-label="Detection Results">
+                        <div class="results-header">
+                            <div>
+                                <span class="card-label">ANALYSIS COMPLETE</span>
+                                <h3>Detection Result</h3>
+                            </div>
+                            <div class="result-status">
+                                <span aria-hidden="true"></span>
+                                Valid Detection
+                            </div>
+                        </div>
+                        <div class="results-grid">
+                            <div class="result-image-card">
+                                <div class="result-image-wrapper">
+                                    <img id="resultImage" src="" alt="Analyzed face result">
+                                </div>
+                            </div>
+                            <div class="result-item gender-result-card">
+                                <span class="result-item-label">DETECTED GENDER</span>
+                                <div class="gender-result">
+                                    <div id="genderIcon" class="gender-icon" aria-hidden="true">?</div>
+                                    <div>
+                                        <div id="genderResult" class="gender-value">--</div>
+                                        <small>AI classification</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-item-label">MODEL PROBABILITY</span>
+                                <div id="confidenceValue" class="large-result-value">--</div>
+                                <div class="confidence-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                    <div id="confidenceProgress" class="confidence-progress"></div>
+                                </div>
+                                <small>Model output probability</small>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-item-label">ESTIMATED AGE</span>
+                                <div class="large-result-value">
+                                    <span id="ageResult">--</span>
+                                    <small>years</small>
+                                </div>
+                                <small>Approximate age estimate</small>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-item-label">FACES DETECTED</span>
+                                <div id="faceCountResult" class="large-result-value">--</div>
+                                <small>Required: exactly 1 face</small>
+                            </div>
+                        </div>
+                        <div class="result-note">
+                            <strong>Important:</strong> The displayed probability is the model's output for this particular image.
+                        </div>
+                    </div>
+
+                    <div id="newAnalysisContainer" class="new-analysis-container">
+                        <button id="newAnalysisButton" type="button" class="btn btn-secondary hidden">
+                            ↻ Perform New Analysis
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================
+                 HOW IT WORKS
+            ======================================= -->
+            <section id="how-it-works" class="how-section section-padding" aria-labelledby="workflow-heading">
+                <div class="container">
+                    <div class="section-heading centered">
+                        <div class="section-label">SYSTEM WORKFLOW</div>
+                        <h2 id="workflow-heading">How the System Works</h2>
+                        <p>The system follows a controlled computer vision pipeline before producing a result.</p>
+                    </div>
+                    <div class="workflow-grid">
+                        <div class="workflow-card">
+                            <div class="workflow-number" aria-hidden="true">01</div>
+                            <div class="workflow-icon" aria-hidden="true">📷</div>
+                            <h3>Input</h3>
+                            <p>An image is uploaded or a frame is captured from the webcam.</p>
+                        </div>
+                        <div class="workflow-card">
+                            <div class="workflow-number" aria-hidden="true">02</div>
+                            <div class="workflow-icon" aria-hidden="true">◉</div>
+                            <h3>Face Detection</h3>
+                            <p>The AI detects faces present in the supplied image.</p>
+                        </div>
+                        <div class="workflow-card">
+                            <div class="workflow-number" aria-hidden="true">03</div>
+                            <div class="workflow-icon" aria-hidden="true">✓</div>
+                            <h3>Validation</h3>
+                            <p>The system accepts exactly one face. Zero or multiple faces are rejected.</p>
+                        </div>
+                        <div class="workflow-card">
+                            <div class="workflow-number" aria-hidden="true">04</div>
+                            <div class="workflow-icon" aria-hidden="true">AI</div>
+                            <h3>Classification</h3>
+                            <p>The pre-trained age and gender model estimates the gender and age.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================
+                 FEATURES
+            ======================================= -->
+            <section id="about" class="features-section section-padding" aria-labelledby="features-heading">
+                <div class="container">
+                    <div class="section-heading">
+                        <div class="section-label">SYSTEM FEATURES</div>
+                        <h2 id="features-heading">Designed for Reliable Demonstration</h2>
+                        <p>The system is designed around a simple, controlled detection workflow suitable for academic research.</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true"></div>
+                            <h3>Pre-trained AI Model</h3>
+                            <p>Uses a real pre-trained face detection and age/gender recognition model.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">👤</div>
+                            <h3>Single Face Validation</h3>
+                            <p>The system rejects images containing multiple faces instead of selecting one arbitrarily.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">⚡</div>
+                            <h3>Browser-Based Processing</h3>
+                            <p>The inference process runs directly in the browser using JavaScript and TensorFlow.js.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🔒</div>
+                            <h3>No Database Required</h3>
+                            <p>Core detection does not require user accounts or a database, ensuring user privacy.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================
+                 LIMITATIONS (ETHICAL AI)
+            ======================================= -->
+            <section class="limitations-section" aria-label="AI Limitations and Ethics">
+                <div class="container">
+                    <div class="limitation-card">
+                        <div class="limitation-icon" aria-hidden="true">i</div>
+                        <div>
+                            <h3>About AI Predictions & Ethics</h3>
+                            <p>
+                                Gender and age outputs are estimates produced by the pre-trained model. 
+                                Performance can vary depending on lighting, pose, image quality, occlusion, 
+                                camera quality and the characteristics of the data used to train the model. 
+                                This system is designed for educational and demonstration purposes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+        <footer class="footer" role="contentinfo">
+            <div class="container footer-container">
+                <div>
+                    <strong>GenderDetect AI</strong>
+                    <p>Real-Time Gender Detection System</p>
+                    <p style="font-size: 10px; color: #64748b; margin-top: 5px;">Built for Academic Research & Demonstration</p>
+                </div>
+                <div class="footer-right">
+                    <span>Computer Vision</span>
+                    <span aria-hidden="true">•</span>
+                    <span>Machine Learning</span>
+                    <span aria-hidden="true">•</span>
+                    <span>TensorFlow.js</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- =========================================================
+         LIBRARIES
+    ========================================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    
+    <!-- =========================================================
+         APPLICATION SCRIPTS
+    ========================================================= -->
+    <script src="js/ui.js"></script>
+    <script src="js/faceDetection.js"></script>
+    <script src="js/genderDetection.js"></script>
+    <script src="js/imageHandler.js"></script>
+    <script src="js/webcam.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
